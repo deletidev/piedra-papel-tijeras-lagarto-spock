@@ -1,0 +1,13 @@
+@use '../../mixins/responsive.scss' as *;
+@use '../../mixins/hover.scss' as *;
+@use '../../mixins/pseudo.scss' as *;
+
+.menu {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 3rem;
+  @include responsive(tablet) {
+    height: 80vh;
+  }
+}

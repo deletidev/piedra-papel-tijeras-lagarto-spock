@@ -1,5 +1,13 @@
-:root {
-  /* Variables CSS */
-}
+/* En esta carpeta puedo tener separadas las variables */
 
-/* Variables SASS */
+:root {
+  --rock: hsl(349, 71%, 52%);
+  --rock-shadow: hsl(349, 71%, 32%);
+  --paper: hsl(230, 89%, 65%);
+  --paper-shadow: hsl(230, 59%, 45%);
+  --scissors: hsl(39, 89%, 49%);
+  --scissors-shadow: hsl(39, 69%, 32%);
+  --lizard: hsl(261, 73%, 60%);
+  --spock: hsl(194, 58%, 42%);
+  --text-titles: #3b4262;
+}

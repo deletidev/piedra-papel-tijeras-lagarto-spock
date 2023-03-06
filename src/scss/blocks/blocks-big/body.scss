@@ -1,0 +1,22 @@
+@use '../../mixins/responsive.scss' as *;
+
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: sans-serif;
+  background-image: radial-gradient(
+    circle at 45% 45%,
+    #29347e 0%,
+    #030b18 100%
+  );
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  color: white;
+  text-align: center;
+}
+
+.text {
+  height: 10vh;
+  padding-top: 3rem;
+}

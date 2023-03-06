@@ -1,0 +1,40 @@
+@use '../../mixins/hover.scss' as *;
+@use '../../mixins/responsive.scss' as *;
+
+.game-item {
+  background-color: white;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 12px solid var(--border-color);
+  box-shadow: inset 0px 7px rgba($color: #000000, $alpha: 0.1),
+    0px 7px var(--shadow);
+  &__img {
+    width: 55%;
+  }
+  &--paper {
+    --border-color: var(--paper);
+    --shadow: var(--paper-shadow);
+    grid-area: paper;
+  }
+  &--scissors {
+    --border-color: var(--scissors);
+    --shadow: var(--scissors-shadow);
+    grid-area: scissors;
+  }
+  &--rock {
+    --border-color: var(--rock);
+    --shadow: var(--rock-shadow);
+    grid-area: rock;
+  }
+  @include responsive(tablet) {
+    width: 180px;
+    height: 180px;
+    border: 18px solid var(--border-color);
+    box-shadow: inset 0px 10px rgba($color: #000000, $alpha: 0.1),
+      0px 10px var(--shadow);
+  }
+}

@@ -1,0 +1,19 @@
+@use '../../mixins/responsive.scss' as *;
+
+.choose {
+  background-image: url(/assets/images/bg-triangle.svg);
+  background-repeat: no-repeat;
+  background-size: 230px;
+  background-position: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: grid;
+  grid-template-areas: 'paper scissors' 'rock rock';
+  row-gap: 3rem;
+  justify-items: center;
+  @include responsive(tablet) {
+    background-size: auto;
+    max-width: 700px;
+    padding: 2rem;
+  }
+}

@@ -6,5 +6,73 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body></body>
+  <body>
+    <header class="header container">
+      <a href="index.html">Volver a la página de inicio</a>
+    </header>
+    <main class="container">
+      <div class="score">
+        <div class="score__user">
+          <p>YOU</p>
+          <p class="score__user-counter">1</p>
+        </div>
+
+        <div class="score__pc">
+          <p>PC</p>
+          <p class="score__pc-counter">1</p>
+        </div>
+      </div>
+      <div class="choose">
+        <div class="game-item game-item--paper">
+          <img
+            class="game-item__img"
+            src="./assets/images/icon-paper.svg"
+            alt="paper icon"
+          />
+        </div>
+        <div class="game-item game-item--scissors">
+          <img
+            class="game-item__img"
+            src="./assets/images/icon-scissors.svg"
+            alt="scissors icon"
+          />
+        </div>
+        <div class="game-item game-item--rock">
+          <img
+            class="game-item__img"
+            src="./assets/images/icon-rock.svg"
+            alt="rock icon"
+          />
+        </div>
+      </div>
+      <div class="results">
+        <div class="results__user">
+          <p>Your Picked</p>
+          <div class="game-item game-item--paper">
+            <img
+              class="game-item__img"
+              src="./assets/images/icon-paper.svg"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="results__text">
+          <h3 class="results__result">YOU LOSE</h3>
+          <button class="results__button">Play again</button>
+        </div>
+        <div class="results__pc">
+          <p>PC Picked</p>
+          <div class="game-item game-item--rock">
+            <img
+              class="game-item__img"
+              src="./assets/images/icon-paper.svg"
+              alt=""
+            />
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer></footer>
+    <script type="module" src="./js/index.js"></script>
+  </body>
 </html>
