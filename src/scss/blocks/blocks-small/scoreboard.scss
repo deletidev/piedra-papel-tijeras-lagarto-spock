@@ -1,34 +1,52 @@
+@use '../../mixins/responsive.scss' as *;
+
 .score {
-  display: flex;
+  display: grid;
+  grid-template-areas: 'title title' 'user pc';
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  justify-items: center;
+  gap: 1.5rem;
   border: 1px solid white;
   width: fit-content;
   padding: 1.5rem;
   margin-left: auto;
   margin-right: auto;
-
-  margin-bottom: 2rem;
+  margin-bottom: 3rem;
   border-radius: 16px;
+  @include responsive(tablet) {
+    // justify-content: center;
+    padding: 1rem;
+    gap: 2rem;
+    grid-template-areas: 'user title pc';
+  }
+  &__user {
+    grid-area: user;
+  }
+  &__pc {
+    grid-area: pc;
+  }
   &__user,
   &__pc {
-    width: 130px;
+    width: 100px;
     background-color: white;
     color: hsl(229deg, 64%, 46%);
     font-weight: 600;
     font-size: 0.85rem;
     border-radius: 8px;
+    padding: 1rem;
+    @include responsive(tablet) {
+      height: 100%;
+    }
     &-counter {
-      font-size: 3rem;
-      margin-top: 0.8rem;
-      margin-bottom: 0.8rem;
+      font-size: 2rem;
+      margin: 0;
       color: var(--text-titles);
       font-weight: 800;
     }
   }
   &__title {
-    font-size: 2.4rem;
+    grid-area: title;
+    font-size: 2rem;
     line-height: 1;
   }
 }

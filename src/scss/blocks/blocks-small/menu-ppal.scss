@@ -3,11 +3,32 @@
 @use '../../mixins/pseudo.scss' as *;
 
 .menu {
-  width: 80%;
+  width: 85%;
   margin-left: auto;
   margin-right: auto;
   gap: 3rem;
   @include responsive(tablet) {
-    height: 80vh;
+    max-width: 800px;
+  }
+  &__text {
+    padding-bottom: 2.5rem;
+    padding-top: 2.5rem;
+    // height: 10vh;
+    // padding-top: 3rem;
+    @include responsive(tablet) {
+      padding-top: 3rem;
+      padding-bottom: 8rem;
+    }
+  }
+  &__img {
+    width: 70%;
+    height: 70%;
+    object-fit: cover;
+    margin-left: auto;
+    margin-right: auto;
+    @include responsive(tablet) {
+      width: 90%;
+      height: 90%;
+    }
   }
 }

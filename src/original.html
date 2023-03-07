@@ -13,16 +13,21 @@
     <main class="container">
       <div class="score">
         <div class="score__user">
-          <p>YOU</p>
-          <p class="score__user-counter">1</p>
+          <p class="no-margin">YOU</p>
+          <p class="score__user-counter">0</p>
         </div>
 
+        <h3 class="score__title no-margin">
+          ROCK<span class="br"></span>PAPER<span class="br"></span> SCISSORS
+        </h3>
+
         <div class="score__pc">
-          <p>PC</p>
-          <p class="score__pc-counter">1</p>
+          <p class="no-margin">PC</p>
+          <p class="score__pc-counter">0</p>
         </div>
       </div>
-      <div class="choose">
+      <h3 class="choose__title">&#8595; CHOOSE ONE &#8595;</h3>
+      <div class="choose choose--active">
         <div class="game-item game-item--paper">
           <img
             class="game-item__img"
@@ -46,8 +51,9 @@
         </div>
       </div>
       <div class="results">
+        <h3 class="results__result">YOU LOSE</h3>
         <div class="results__user">
-          <p>Your Picked</p>
+          <p class="no-margin-top">Your Picked</p>
           <div class="game-item game-item--paper">
             <img
               class="game-item__img"
@@ -56,12 +62,8 @@
             />
           </div>
         </div>
-        <div class="results__text">
-          <h3 class="results__result">YOU LOSE</h3>
-          <button class="results__button">Play again</button>
-        </div>
         <div class="results__pc">
-          <p>PC Picked</p>
+          <p class="no-margin-top">PC Picked</p>
           <div class="game-item game-item--rock">
             <img
               class="game-item__img"
@@ -70,6 +72,7 @@
             />
           </div>
         </div>
+        <button class="results__button">Play again</button>
       </div>
     </main>
     <footer></footer>

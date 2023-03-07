@@ -1,15 +1,39 @@
+@use '../../mixins/responsive.scss' as *;
+@use '../../mixins/hover.scss' as *;
+
 .results {
-  display: flex;
   display: none;
   align-items: center;
+  justify-items: center;
   justify-content: center;
-  gap: 4rem;
+  grid-template-areas: 'result result' 'result-user result-pc' 'play play';
+  gap: 2rem;
   margin-left: auto;
   margin-right: auto;
+  @include responsive(tablet) {
+    column-gap: 3rem;
+    grid-template-areas: 'result-user result result-pc' 'result-user play result-pc';
+  }
   &__result {
+    grid-area: result;
+    margin: 0;
     font-size: 1.8rem;
+    @include responsive(tablet) {
+      margin-top: 70px;
+    }
+  }
+  &__user {
+    grid-area: result-user;
+  }
+  &__pc {
+    grid-area: result-pc;
+  }
+  &__user,
+  &__pc {
+    margin-bottom: 7px;
   }
   &__button {
+    grid-area: play;
     padding: 1rem;
     cursor: pointer;
     text-transform: uppercase;
@@ -17,5 +41,17 @@
     border: none;
     border-radius: 12px;
     font-size: 1.4rem;
+    transition: color 0.2s ease-in-out;
+    @include responsive(tablet) {
+      margin-bottom: 50px;
+    }
+    @include hover {
+      &:hover {
+        color: var(--lizard);
+      }
+    }
+  }
+  &--active {
+    display: grid;
   }
 }

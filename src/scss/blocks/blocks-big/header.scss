@@ -1,5 +1,12 @@
+@use '../../mixins/responsive.scss' as *;
+
 .header {
   text-align: left;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding-top: 1rem;
+  padding-bottom: 1.5rem;
+  font-size: 0.9rem;
+  @include responsive(tablet) {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+  }
 }
