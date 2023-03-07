@@ -14,4 +14,14 @@ body {
   min-height: 100vh;
   color: white;
   text-align: center;
+  animation: pagina 1s ease-in-out;
+}
+
+@keyframes pagina {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
