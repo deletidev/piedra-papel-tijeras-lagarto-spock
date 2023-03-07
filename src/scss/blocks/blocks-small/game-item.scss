@@ -21,13 +21,14 @@
       0px 10px var(--shadow), var(--shadow-hover);
   }
   &__img {
+    pointer-events: none;
     width: 55%;
   }
-  &--paper,
-  &--scissors,
-  &--rock,
-  &--lizard,
-  &--spock {
+  &[data-type='paper'],
+  &[data-type='scissors'],
+  &[data-type='rock'],
+  &[data-type='lizard'],
+  &[data-type='spock'] {
     transition: transform 0.2s ease-in-out;
     cursor: pointer;
     @include hover {
@@ -37,45 +38,46 @@
       }
     }
   }
-  &--paper {
+  &[data-type='paper'] {
     --border-color: var(--paper);
     --shadow: var(--paper-shadow);
     grid-area: paper;
-    &-version {
-      justify-self: end;
-      margin-bottom: 2.4rem;
-      @include responsive(tablet) {
-        margin-bottom: 3.4rem;
-      }
-    }
   }
-  &--scissors {
+
+  &[data-type='scissors'] {
     --border-color: var(--scissors);
     --shadow: var(--scissors-shadow);
     grid-area: scissors;
   }
-  &--rock {
+  &[data-type='rock'] {
     --border-color: var(--rock);
     --shadow: var(--rock-shadow);
     grid-area: rock;
-    &-version {
-      justify-self: start;
-    }
   }
-  &--lizard {
+  &[data-type='lizard'] {
     --border-color: var(--lizard);
     --shadow: var(--lizard-shadow);
     grid-area: lizard;
-    &-version {
-      justify-self: end;
-    }
   }
-  &--spock {
+  &[data-type='spock'] {
     --border-color: var(--spock);
     --shadow: var(--spock-shadow);
     grid-area: spock;
-    &-version {
-      justify-self: start;
+  }
+  &--paper-version {
+    justify-self: end;
+    margin-bottom: 2.8rem;
+    @include responsive(tablet) {
+      margin-bottom: 3.4rem;
     }
+  }
+  &--rock-version {
+    justify-self: start;
+  }
+  &--lizard-version {
+    justify-self: end;
+  }
+  &--spock-version {
+    justify-self: start;
   }
 }

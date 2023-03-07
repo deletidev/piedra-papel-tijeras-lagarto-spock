@@ -14,7 +14,7 @@
       <div class="score">
         <div class="score__user">
           <p class="no-margin">YOU</p>
-          <p class="score__user-counter">0</p>
+          <p id="counter-user" class="score__user-counter">0</p>
         </div>
 
         <h3 class="score__title no-margin">
@@ -23,26 +23,28 @@
 
         <div class="score__pc">
           <p class="no-margin">PC</p>
-          <p class="score__pc-counter">0</p>
+          <p id="counter-pc" class="score__pc-counter">0</p>
         </div>
       </div>
-      <h3 class="choose__title">&#8595; CHOOSE ONE &#8595;</h3>
-      <div class="choose choose--active">
-        <div class="game-item game-item--paper">
+      <h3 id="choose-title" class="choose__title choose__title--active">
+        &#8595; CHOOSE ONE &#8595;
+      </h3>
+      <div id="choose" class="choose choose--active">
+        <div class="game-item game-item--paper" data-type="paper">
           <img
             class="game-item__img"
             src="./assets/images/icon-paper.svg"
             alt="paper icon"
           />
         </div>
-        <div class="game-item game-item--scissors">
+        <div class="game-item" data-type="scissors">
           <img
             class="game-item__img"
             src="./assets/images/icon-scissors.svg"
             alt="scissors icon"
           />
         </div>
-        <div class="game-item game-item--rock">
+        <div class="game-item" data-type="rock">
           <img
             class="game-item__img"
             src="./assets/images/icon-rock.svg"
@@ -50,12 +52,13 @@
           />
         </div>
       </div>
-      <div class="results">
-        <h3 class="results__result">YOU LOSE</h3>
+      <div id="results" class="results">
+        <h3 id="results-title" class="results__result">YOU LOSE</h3>
         <div class="results__user">
           <p class="no-margin-top">Your Picked</p>
-          <div class="game-item game-item--paper">
+          <div id="result-user" class="game-item" data-type="paper">
             <img
+              id="user-img"
               class="game-item__img"
               src="./assets/images/icon-paper.svg"
               alt=""
@@ -64,15 +67,16 @@
         </div>
         <div class="results__pc">
           <p class="no-margin-top">PC Picked</p>
-          <div class="game-item game-item--rock">
+          <div id="result-pc" class="game-item" data-type="rock">
             <img
+              id="pc-img"
               class="game-item__img"
               src="./assets/images/icon-paper.svg"
               alt=""
             />
           </div>
         </div>
-        <button class="results__button">Play again</button>
+        <button id="play-again" class="results__button">Play again</button>
       </div>
     </main>
     <footer></footer>

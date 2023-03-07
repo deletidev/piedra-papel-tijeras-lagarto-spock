@@ -14,7 +14,7 @@
       <div class="score">
         <div class="score__user">
           <p class="no-margin">YOU</p>
-          <p class="score__user-counter">1</p>
+          <p id="counter-user" class="score__user-counter">0</p>
         </div>
 
         <h3 class="score__title no-margin">
@@ -23,43 +23,46 @@
 
         <div class="score__pc">
           <p class="no-margin">PC</p>
-          <p class="score__pc-counter">1</p>
+          <p id="counter-pc" class="score__pc-counter">0</p>
         </div>
       </div>
 
-      <div class="choose choose--version choose--active">
-        <h3 class="choose__title choose__title--version">
+      <div id="choose" class="choose choose--version choose--active">
+        <h3
+          id="choose-title"
+          class="choose__title choose__title--version choose__title--active"
+        >
           CHOOSE <span class="br"></span> ONE
         </h3>
-        <div class="game-item game-item--paper game-item--paper-version">
+        <div class="game-item game-item--paper-version" data-type="paper">
           <img
             class="game-item__img"
             src="./assets/images/icon-paper.svg"
             alt="paper icon"
           />
         </div>
-        <div class="game-item game-item--lizard game-item--lizard-version">
+        <div class="game-item game-item--lizard-version" data-type="lizard">
           <img
             class="game-item__img"
             src="./assets/images/icon-lizard.svg"
             alt="lizard icon"
           />
         </div>
-        <div class="game-item game-item--spock game-item--spock-version">
+        <div class="game-item game-item--spock-version" data-type="spock">
           <img
             class="game-item__img"
             src="./assets/images/icon-spock.svg"
             alt="spock icon"
           />
         </div>
-        <div class="game-item game-item--scissors game-item--scissors-version">
+        <div class="game-item game-item--scissors-version" data-type="scissors">
           <img
             class="game-item__img"
             src="./assets/images/icon-scissors.svg"
             alt="scissors icon"
           />
         </div>
-        <div class="game-item game-item--rock game-item--rock-version">
+        <div class="game-item game-item--rock-version" data-type="rock">
           <img
             class="game-item__img"
             src="./assets/images/icon-rock.svg"
@@ -67,12 +70,13 @@
           />
         </div>
       </div>
-      <div class="results">
-        <h3 class="results__result">YOU LOSE</h3>
+      <div id="results" class="results">
+        <h3 id="results-title" class="results__result">YOU LOSE</h3>
         <div class="results__user">
           <p class="no-margin-top">Your Picked</p>
-          <div class="game-item game-item--paper">
+          <div id="result-user" class="game-item" data-type="papper">
             <img
+              id="user-img"
               class="game-item__img"
               src="./assets/images/icon-paper.svg"
               alt=""
@@ -81,15 +85,16 @@
         </div>
         <div class="results__pc">
           <p class="no-margin-top">PC Picked</p>
-          <div class="game-item game-item--rock">
+          <div id="result-pc" class="game-item" data-type="rock">
             <img
+              id="pc-img"
               class="game-item__img"
               src="./assets/images/icon-paper.svg"
               alt=""
             />
           </div>
         </div>
-        <button class="results__button">Play again</button>
+        <button id="play-again" class="results__button">Play again</button>
       </div>
     </main>
     <footer></footer>
