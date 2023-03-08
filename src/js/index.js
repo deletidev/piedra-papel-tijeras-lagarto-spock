@@ -6,7 +6,6 @@ import scissorsImg from '../assets/images/icon-scissors.svg';
 import lizardImg from '../assets/images/icon-lizard.svg';
 import spockImg from '../assets/images/icon-spock.svg';
 
-const gameItem = [...document.querySelectorAll('.game-item')];
 const choose = document.getElementById('choose');
 const results = document.getElementById('results');
 const chooseTitle = document.getElementById('choose-title');
@@ -30,77 +29,96 @@ const images = {
   spock: spockImg
 };
 
+const rulesx = {
+  scissors: {
+    paper: true,
+    rock: false,
+    lizard: true,
+    spock: false
+  },
+  paper: {
+    scissors: false,
+    rock: true,
+    lizard: false,
+    spock: true
+  },
+  rock: {
+    paper: false,
+    scissors: true,
+    lizard: true,
+    spock: false
+  },
+  lizard: {
+    paper: true,
+    rock: false,
+    scissors: false,
+    spock: true
+  },
+  spock: {
+    paper: false,
+    rock: true,
+    lizard: false,
+    scissors: true
+  }
+};
+
 if (choose.classList.contains('choose--version')) {
-  elements = ['paper', 'scissors', 'rock', 'lizard', 'spock'];
+  elements.push('lizard', 'spock');
 }
 
-choose.addEventListener('click', e => {
-  if (e.target.classList.contains('game-item')) {
-    choose.classList.toggle('choose--active');
-    results.classList.toggle('results--active');
-    chooseTitle.classList.toggle('choose__title--active');
-    const nameUser = e.target.dataset.type;
-    resultUser.dataset.type = nameUser;
-    const number = randomNumber(0, elements.length - 1);
-    const namePc = elements[number];
-    resultPc.dataset.type = namePc;
-    userImg.src = images[nameUser];
-    pcImg.src = images[namePc];
-    const restRules = rules2(nameUser, namePc);
-    if (restRules === 'loose') {
-      pcWin++;
-    }
-    if (restRules === 'win') {
-      userWin++;
-    }
-    counterUser.textContent = userWin;
-    counterPc.textContent = pcWin;
-    resultsTitle.textContent = `YOU ${restRules.toUpperCase()}!`;
+const rules = (nameUser, namePc) => {
+  // console.log(nameUser, '--', namePc);
+  // console.log(rulesx[nameUser][namePc]);
+  if (!nameUser && !namePc) {
+    throw new Error('tu juego está roto, recarga');
   }
-});
-
-const rules2 = (nameUser, namePc) => {
-  if (
-    (nameUser === 'rock' && namePc === 'scissors') ||
-    (nameUser === 'rock' && namePc === 'lizard')
-  ) {
-    return 'win';
-  }
-  if (
-    (nameUser === 'paper' && namePc === 'rock') ||
-    (nameUser === 'paper' && namePc === 'spock')
-  ) {
-    return 'win';
-  }
-  if (
-    (nameUser === 'scissors' && namePc === 'paper') ||
-    (nameUser === 'scissors' && namePc === 'lizard')
-  ) {
-    return 'win';
-  }
-  if (
-    (nameUser === 'lizard' && namePc === 'paper') ||
-    (nameUser === 'lizard' && namePc === 'spock')
-  ) {
-    return 'win';
-  }
-  if (
-    (nameUser === 'spock' && namePc === 'rock') ||
-    (nameUser === 'spock' && namePc === 'scissors')
-  ) {
+  if (rulesx[nameUser][namePc]) {
     return 'win';
   }
   if (nameUser === namePc) {
     return 'tie';
   }
-  return 'loose';
+  return 'lose';
 };
 
-playAgain.addEventListener('click', () => {
+const checks = () => {
   choose.classList.toggle('choose--active');
   results.classList.toggle('results--active');
   chooseTitle.classList.toggle('choose__title--active');
-});
+};
 
 const randomNumber = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
+
+const counters = (nameUser, namePc) => {
+  const restRules = rules(nameUser, namePc);
+  resultsTitle.textContent = `YOU ${restRules.toUpperCase()}!`;
+
+  if (restRules === 'lose') {
+    pcWin++;
+  } else if (restRules === 'win') {
+    userWin++;
+  }
+
+  counterUser.textContent = userWin;
+  counterPc.textContent = pcWin;
+};
+
+const userChoose = nameUser => {
+  resultUser.dataset.type = nameUser;
+  userImg.src = images[nameUser];
+  return nameUser;
+};
+const pcChoose = () => {
+  const namePc = elements[randomNumber(0, elements.length - 1)];
+  resultPc.dataset.type = namePc;
+  pcImg.src = images[namePc];
+  return namePc;
+};
+choose.addEventListener('click', e => {
+  if (!e.target.classList.contains('game-item')) return;
+  checks();
+  counters(userChoose(e.target.dataset.type), pcChoose);
+});
+
+playAgain.addEventListener('click', checks);
