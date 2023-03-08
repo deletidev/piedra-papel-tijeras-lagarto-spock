@@ -29,7 +29,7 @@ const images = {
   spock: spockImg
 };
 
-const rulesx = {
+const rules = {
   scissors: {
     paper: true,
     rock: false,
@@ -66,13 +66,11 @@ if (choose.classList.contains('choose--version')) {
   elements.push('lizard', 'spock');
 }
 
-const rules = (nameUser, namePc) => {
-  // console.log(nameUser, '--', namePc);
-  // console.log(rulesx[nameUser][namePc]);
+const result = (nameUser, namePc) => {
   if (!nameUser && !namePc) {
     throw new Error('tu juego está roto, recarga');
   }
-  if (rulesx[nameUser][namePc]) {
+  if (rules[nameUser][namePc]) {
     return 'win';
   }
   if (nameUser === namePc) {
@@ -81,7 +79,7 @@ const rules = (nameUser, namePc) => {
   return 'lose';
 };
 
-const checks = () => {
+const changeScreen = () => {
   choose.classList.toggle('choose--active');
   results.classList.toggle('results--active');
   chooseTitle.classList.toggle('choose__title--active');
@@ -90,8 +88,21 @@ const checks = () => {
 const randomNumber = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 
+const userChoose = nameUser => {
+  resultUser.dataset.type = nameUser;
+  userImg.src = images[nameUser];
+  return nameUser;
+};
+
+const pcChoose = () => {
+  const namePc = elements[randomNumber(0, elements.length - 1)];
+  resultPc.dataset.type = namePc;
+  pcImg.src = images[namePc];
+  return namePc;
+};
+
 const counters = (nameUser, namePc) => {
-  const restRules = rules(nameUser, namePc);
+  const restRules = result(nameUser, namePc);
   resultsTitle.textContent = `YOU ${restRules.toUpperCase()}!`;
 
   if (restRules === 'lose') {
@@ -99,26 +110,14 @@ const counters = (nameUser, namePc) => {
   } else if (restRules === 'win') {
     userWin++;
   }
-
   counterUser.textContent = userWin;
   counterPc.textContent = pcWin;
 };
 
-const userChoose = nameUser => {
-  resultUser.dataset.type = nameUser;
-  userImg.src = images[nameUser];
-  return nameUser;
-};
-const pcChoose = () => {
-  const namePc = elements[randomNumber(0, elements.length - 1)];
-  resultPc.dataset.type = namePc;
-  pcImg.src = images[namePc];
-  return namePc;
-};
 choose.addEventListener('click', e => {
   if (!e.target.classList.contains('game-item')) return;
-  checks();
-  counters(userChoose(e.target.dataset.type), pcChoose);
+  changeScreen();
+  counters(userChoose(e.target.dataset.type), pcChoose());
 });
 
-playAgain.addEventListener('click', checks);
+playAgain.addEventListener('click', changeScreen);
