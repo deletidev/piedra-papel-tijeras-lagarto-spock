@@ -62,10 +62,6 @@ const rules = {
   }
 };
 
-if (choose.classList.contains('choose--version')) {
-  elements.push('lizard', 'spock');
-}
-
 const result = (nameUser, namePc) => {
   if (!nameUser && !namePc) {
     throw new Error('tu juego está roto, recarga');
@@ -114,10 +110,14 @@ const counters = (nameUser, namePc) => {
   counterPc.textContent = pcWin;
 };
 
-choose.addEventListener('click', e => {
-  if (!e.target.classList.contains('game-item')) return;
-  changeScreen();
-  counters(userChoose(e.target.dataset.type), pcChoose());
-});
-
-playAgain.addEventListener('click', changeScreen);
+if (choose) {
+  if (choose.classList.contains('choose--version')) {
+    elements.push('lizard', 'spock');
+  }
+  choose.addEventListener('click', e => {
+    if (!e.target.classList.contains('game-item')) return;
+    changeScreen();
+    counters(userChoose(e.target.dataset.type), pcChoose());
+  });
+  playAgain.addEventListener('click', changeScreen);
+}
