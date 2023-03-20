@@ -12,7 +12,7 @@ Dos juegos creados con Javascript el primero el juego piedra, papel o tijera ori
 
 ## ¿Qué he aprendido en este proyecto? 🙇🏻
 
-He aprendido a crear simplificar el uso de if en Javascript, y a reusar todo lo posible el código genrado, tanto en css como en js.
+He aprendido a simplificar el uso de if en Javascript, y a reusar todo lo posible el código genrado, tanto en css como en js.
 
 ## Tecnologías 🛠
 
